@@ -1,27 +1,44 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { DASHBOARD, CALENDAR } from '@constants/routes';
+import { DASHBOARD, CALENDAR, MY_WORKSPACE } from '@constants/routes';
 import NavigationService from '@utils/navigationService';
 
 import DashboardScreen from '@screens/DashboardScreen';
 import CalendarScreen from '@screens/CalendarScreen';
+import MyWorkspaceScreen from '@screens/MyWorkspaceScreen';
 
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
   return (
-    <NavigationContainer
-      ref={navigationRef =>
-        NavigationService.setTopLevelNavigator(navigationRef)
-      }
-    >
-      <Stack.Navigator initialRouteName={DASHBOARD}>
-        <Stack.Screen name={DASHBOARD} component={DashboardScreen} />
-        <Stack.Screen name={CALENDAR} component={CalendarScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View style={{ flex: 1 }}>
+      <StatusBar barStyle="dark-content" />
+      <NavigationContainer
+        ref={navigationRef =>
+          NavigationService.setTopLevelNavigator(navigationRef)
+        }
+      >
+        <Stack.Navigator initialRouteName={DASHBOARD}>
+          <Stack.Screen
+            name={DASHBOARD}
+            component={DashboardScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name={CALENDAR}
+            component={CalendarScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name={MY_WORKSPACE}
+            component={MyWorkspaceScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </View>
   );
 };
 

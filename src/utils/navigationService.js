@@ -1,4 +1,5 @@
 import { CommonActions } from '@react-navigation/native';
+import { DASHBOARD } from '@constants/routes';
 
 let _navigator;
 
