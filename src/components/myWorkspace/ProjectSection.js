@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+
+import MyWorkspaceService from '@services/myWorkspaceService';
+
 import ProgressBar from '@components/common/ProgressBar';
 import AvatarRow from '@components/myWorkspace/AvatarRow';
 
 const avatars = [
-  'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
-  'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
-  'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
-  'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
-  'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
-  'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
+  
 ];
 
-const ProjectCard = () => {
+const ProjectCard = (props) => {
   return (
     <View style={styles.projectCard}>
-      <Text style={styles.projectName}>Project Card</Text>
+      <Text style={styles.projectName}>{props.name}</Text>
       <AvatarRow avatars={avatars} />
       <View style={styles.progressInfo}>
         <Text style={styles.progressText}>Progress</Text>
@@ -27,12 +25,20 @@ const ProjectCard = () => {
 };
 
 const ProjectSection = () => {
+  const [myWorkspaces, setMyWorkspaces] = useState([]);
+
+  useEffect(() => {
+    const getMyWorkspaces = async () => {
+      const workspaces = await MyWorkspaceService.getWorkspaces();
+      setMyWorkspaces(workspaces);
+    };
+
+    getMyWorkspaces();
+  }, []);
+
   return (
     <View style={styles.projects}>
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
+      {myWorkspaces.map((workspace) => <ProjectCard key={workspace.id} name={workspace.title}/>)}
     </View>
   );
 };
@@ -73,5 +79,5 @@ const styles = StyleSheet.create({
   },
   progressBar: {
     marginTop: 8,
-  }
+  },
 });

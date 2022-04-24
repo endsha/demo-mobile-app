@@ -3,6 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 import Avatar from '@components/common/Avatar';
 
 const AvatarRow = props => {
+  if (props.avatars.length === 0) {
+    return (
+      <View style={{...styles.container, justifyContent: 'center'}}>
+        <Text style={styles.emptyText}>There is no participant.</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       {props.avatars.slice(0, 5).map((avatar, index) => (
@@ -31,6 +39,9 @@ const AvatarRow = props => {
 export default AvatarRow;
 
 const styles = StyleSheet.create({
+  emptyText: {
+    fontSize: 12,
+  },
   container: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -11,6 +11,7 @@ module.exports = {
           "@screens": "./src/screens",
           "@utils": "./src/utils",
           "@constants": "./src/constants",
+          "@services": "./src/services",
         },
         extensions: [".js", ".ios.js", ".android.js", ".json"]
       },
