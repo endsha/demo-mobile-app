@@ -1,7 +1,84 @@
 import React from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import Icon from 'react-native-vector-icons/Feather';
 import NavigationService from '@utils/navigationService';
+import Colors from '@constants/colors';
+
+const hours = [
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+  22, 23,
+];
+
+const hourHeight = 52;
+
+const Day = () => {
+  return (
+    <View style={styles.dayContainer}>
+      {hours.map((hour, index) => (
+        <View style={styles.hourContainer} key={`hour-${index}`}>
+          <Text>
+            {hour > 12 ? hour % 12 : hour} {hour > 12 ? 'PM' : 'AM'}
+          </Text>
+        </View>
+      ))}
+      <View style={styles.hourContainer} key={`hour-24`}>
+        <Text>0 AM</Text>
+      </View>
+    </View>
+  );
+};
+
+const Tasks = props => {
+  return (
+    <View style={{ paddingRight: 20 }}>
+      {hours.map(hour => {
+        const hourTasks = [];
+        props.tasks.map(task => {
+          if (hour === task.start) {
+            hourTasks.push({ ...task, isStart: true });
+          } else if (hour === task.end) {
+            hourTasks.push({ ...task, isEnd: true });
+          } else if (task.start < hour && task.end > hour) {
+            hourTasks.push({ ...task, isMiddle: true });
+          }
+        });
+        if (hourTasks.length === 0) {
+          return (
+            <View style={styles.emptyTask}>
+              <View style={styles.dashLine} />
+            </View>
+          );
+        } else {
+          if (hourTasks.length === 1) {
+            return (
+              <View
+                style={{
+                  ...styles.taskContainer,
+                  height: hourHeight,
+                }}
+              >
+                <View
+                  style={{
+                    ...styles.taskTime,
+                    height: hourTasks[0].isEnd ? hourHeight / 2 - 10 : hourHeight,
+                  }}
+                />
+                {hourTasks[0].isStart && <Text>{hourTasks[0].name}</Text>}
+              </View>
+            );
+          }
+        }
+      })}
+    </View>
+  );
+};
 
 const CalendarScreen = () => {
   const goBackToHome = () => {
@@ -9,65 +86,134 @@ const CalendarScreen = () => {
   };
 
   return (
-    <SafeAreaView>
-      <TouchableOpacity onPress={() => goBackToHome()}>
-        <Text>CALENDAR SCREEN</Text>
-      </TouchableOpacity>
-      <Calendar
-        // Initially visible month. Default = now
-        current={'2012-03-01'}
-        // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
-        minDate={'2012-05-10'}
-        // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-        maxDate={'2012-05-30'}
-        // Handler which gets executed on day press. Default = undefined
-        onDayPress={day => {
-          console.log('selected day', day);
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backgroundColor }}>
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => goBackToHome()}>
+          <Icon name="chevron-left" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.heading}>
+        <Text style={styles.headingTitle}>Today</Text>
+        <TouchableOpacity style={styles.addTaskBtn}>
+          <Text style={styles.addTaskBtnText}>Add task</Text>
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.subHeading}>Productive Day, Phillip</Text>
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity style={styles.monthBtn}>
+          <Text style={styles.monthBtnText}>April, 2022</Text>
+        </TouchableOpacity>
+      </View>
+      <Agenda
+        items={{
+          '2022-04-22': [
+            {
+              tasks: [
+                {
+                  name: 'Testing',
+                  start: 0,
+                  end: 6,
+                },
+              ],
+            },
+          ],
         }}
-        // Handler which gets executed on day long press. Default = undefined
-        onDayLongPress={day => {
-          console.log('selected day', day);
+        selected={'2022-04-22'}
+        hideKnob
+        renderEmptyData={() => <Day />}
+        renderItem={item => <Tasks tasks={item.tasks} />}
+        renderDay={() => {
+          return <Day />;
         }}
-        // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-        monthFormat={'yyyy MM'}
-        // Handler which gets executed when visible month changes in calendar. Default = undefined
-        onMonthChange={month => {
-          console.log('month changed', month);
+        disabledDaysIndexes={[0, 6]}
+        theme={{
+          dotColor: 'transparent',
+          selectedDotColor: 'transparent',
+          backgroundColor: Colors.backgroundColor,
+          calendarBackground: Colors.backgroundColor,
+          selectedDayBackgroundColor: Colors.backgroundColor,
+          selectedDayTextColor: '#D46B74',
+          // textSectionTitleColor: '#D46B74',
+          textSectionTitleDisabledColor: 'red',
+          monthTextColor: 'blue',
         }}
-        // Hide month navigation arrows. Default = false
-        hideArrows={true}
-        // Replace default arrows with custom ones (direction can be 'left' or 'right')
-        renderArrow={direction => <Arrow />}
-        // Do not show days of other months in month page. Default = false
-        hideExtraDays={true}
-        // If hideArrows = false and hideExtraDays = false do not switch month when tapping on greyed out
-        // day from another month that is visible in calendar page. Default = false
-        disableMonthChange={true}
-        // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday
-        firstDay={1}
-        // Hide day names. Default = false
-        hideDayNames={true}
-        // Show week numbers to the left. Default = false
-        showWeekNumbers={true}
-        // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-        onPressArrowLeft={subtractMonth => subtractMonth()}
-        // Handler which gets executed when press arrow icon right. It receive a callback can go next month
-        onPressArrowRight={addMonth => addMonth()}
-        // Disable left arrow. Default = false
-        disableArrowLeft={true}
-        // Disable right arrow. Default = false
-        disableArrowRight={true}
-        // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
-        disableAllTouchEventsForDisabledDays={true}
-        // Replace default month and year title with custom one. the function receive a date as parameter
-        renderHeader={date => {
-          /*Return JSX*/
-        }}
-        // Enable the option to swipe between months. Default = false
-        enableSwipeMonths={true}
       />
     </SafeAreaView>
   );
 };
 
 export default CalendarScreen;
+
+const styles = StyleSheet.create({
+  backBtn: {
+    marginLeft: 16,
+    marginTop: 12,
+  },
+  heading: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 32,
+    paddingHorizontal: 20,
+  },
+  headingTitle: {
+    fontSize: 32,
+    fontWeight: 'bold',
+  },
+  addTaskBtn: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 32,
+    backgroundColor: Colors.primaryButtonColor,
+  },
+  addTaskBtnText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  subHeading: {
+    paddingHorizontal: 20,
+    fontSize: 16,
+    fontWeight: '600',
+    opacity: 0.6,
+  },
+  monthBtn: {
+    marginTop: 32,
+    marginLeft: 20,
+  },
+  monthBtnText: {
+    fontSize: 18,
+    fontWeight: '500',
+  },
+  dayContainer: {
+    flexDirection: 'column',
+    paddingHorizontal: 24,
+    backgroundColor: Colors.backgroundColor,
+    alignItems: 'flex-start',
+  },
+  hourContainer: {
+    height: hourHeight,
+    alignItems: 'center',
+  },
+  emptyTask: {
+    height: hourHeight,
+  },
+  dashLine: {
+    width: '100%',
+    borderStyle: 'dashed',
+    borderRadius: 2,
+    borderColor: 'black',
+    borderWidth: 1,
+    opacity: 0.1,
+    marginTop: 8,
+  },
+  taskContainer: {},
+  taskTime: {
+    backgroundColor: '#FBE3CA',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+  },
+});

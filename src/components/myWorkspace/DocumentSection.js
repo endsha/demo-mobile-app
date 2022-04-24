@@ -2,33 +2,46 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '@constants/colors';
+import Config from '@constants/config';
+
+import MyWorkspaceService from '@services/myWorkspaceService';
 
 const documents = [
   {
     name: 'Equipment Purchase.pdf',
     destination: 'Disk / Objects / Contracts ...',
+    workspace: 'testing',
   },
   {
     name: 'Equipment Purchase.pdf',
     destination: 'Disk / Objects / Contracts ...',
+    workspace: 'testing 2',
   },
   {
     name: 'Equipment Purchase.pdf',
     destination: 'Disk / Objects / Contracts ...',
+    workspace: 'testing 1',
   },
   {
     name: 'Equipment Purchase.pdf',
     destination: 'Disk / Objects / Contracts ...',
+    workspace: 'testing 3',
   },
   {
     name: 'Equipment Purchase.pdf',
     destination: 'Disk / Objects / Contracts ...',
+    workspace: 'testing',
   },
 ];
 
 const Document = (props) => {
+
+  const onViewDocuments = async () => {
+    await MyWorkspaceService.trackActivity({user: Config.DEMO_EMAIL, workspace: props.workspace});
+  }
+
   return (
-    <TouchableOpacity style={styles.documentCard}>
+    <TouchableOpacity style={styles.documentCard} onPress={() => onViewDocuments()}>
       <Icon name="file" size={24} color={Colors.progressBar} />
       <View style={styles.documentInfo}>
         <Text style={styles.documentName}>{props.name}</Text>
@@ -52,6 +65,7 @@ const DocumentSection = () => {
           key={`document-${index}`}
           name={doc.name}
           destination={doc.destination}
+          workspace={doc.workspace}
         />
       ))}
     </View>

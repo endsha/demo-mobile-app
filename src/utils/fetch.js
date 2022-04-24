@@ -54,3 +54,25 @@ export const postData = async (endpoint, body, headers) => {
     console.log('Post Data Error: ', err);
   }
 };
+
+export const postTrackingAcitivity = async (endpoint, body, headers) => {
+  try {
+    headers = {
+      Accept: '*/*',
+      'Content-Type': 'application/json',
+      ...headers,
+    };
+
+    const response = await fetch(`${Config.TRACKING_URL}${endpoint}`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+    });
+
+    const result = await response.json();
+
+    return result;
+  } catch (err) {
+    console.log('Post Data Error: ', err);
+  }
+}

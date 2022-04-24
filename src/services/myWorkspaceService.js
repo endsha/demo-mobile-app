@@ -1,4 +1,4 @@
-import { fetchDataWithToken } from "@utils/fetch";
+import { fetchDataWithToken, postTrackingAcitivity } from "@utils/fetch";
 
 const MyWorkspaceService = {
   getWorkspaces: async () => {
@@ -10,6 +10,16 @@ const MyWorkspaceService = {
       }
     } catch (err) {
       console.log("ERROR getWorkspaces: ", err);
+    }
+  },
+  trackActivity: async ({user, workspace}) => {
+    try {
+      const response = await postTrackingAcitivity('activities/tracking', {
+        workspace: workspace,
+        user: user,
+      })
+    } catch (err) {
+      console.log("ERROR Tracking Activity: ", err);
     }
   }
 }
