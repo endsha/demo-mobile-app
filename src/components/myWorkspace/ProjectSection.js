@@ -6,14 +6,17 @@ import MyWorkspaceService from '@services/myWorkspaceService';
 import ProgressBar from '@components/common/ProgressBar';
 import AvatarRow from '@components/myWorkspace/AvatarRow';
 
-const avatars = [
-  
-];
+const ProjectCard = props => {
+  const avatars = props.users && props.users.map(user => ({
+    name: user.firstName,
+    imageUrl: `${user.avatarUrl || ''}`,
+  }));
 
-const ProjectCard = (props) => {
+  console.log("AVATAR: ", avatars);
+
   return (
     <View style={styles.projectCard}>
-      <Text style={styles.projectName}>{props.name}</Text>
+      <Text style={styles.projectName}>{props.title}</Text>
       <AvatarRow avatars={avatars} />
       <View style={styles.progressInfo}>
         <Text style={styles.progressText}>Progress</Text>
@@ -38,7 +41,10 @@ const ProjectSection = () => {
 
   return (
     <View style={styles.projects}>
-      {myWorkspaces.map((workspace) => <ProjectCard key={workspace.id} name={workspace.title}/>)}
+      {myWorkspaces &&
+        myWorkspaces.map(workspace => (
+          <ProjectCard key={workspace.id} {...workspace} />
+        ))}
     </View>
   );
 };

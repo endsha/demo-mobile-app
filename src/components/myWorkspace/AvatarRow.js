@@ -24,8 +24,9 @@ const AvatarRow = props => {
           )}
           <Avatar
             key={`avatar-${index}`}
+            name={avatar.name}
             source={{
-              uri: avatar,
+              uri: avatar.url,
             }}
             resizeMode="cover"
             style={{ marginLeft: index !== 0 ? -8 : 0 }}
