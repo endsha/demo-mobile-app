@@ -10,6 +10,8 @@ const Colors = {
   },
 
   progressBar: '#477CD2',
+
+  selectedDate: '#D46B74',
 };
 
 export default Colors;

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -6,79 +6,20 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import { Agenda } from 'react-native-calendars';
+import { AgendaData, HourHeight } from '@constants/data';
+import { getMonthName } from '@utils/date';
 import Icon from 'react-native-vector-icons/Feather';
 import NavigationService from '@utils/navigationService';
 import Colors from '@constants/colors';
 
-const hours = [
-  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-  22, 23, 24,
-];
-
-const hourHeight = 52;
-
-const Day = () => {
-  return (
-    <View style={styles.dayContainer}>
-      {hours.map((hour, index) => (
-        <View style={styles.hourContainer} key={`hour-${index}`}>
-          {hour !== 24 ? (
-            <Text>
-              {hour > 12 ? hour % 12 : hour} {hour > 12 ? 'PM' : 'AM'}
-            </Text>
-          ) : (
-            <Text>0 AM</Text>
-          )}
-        </View>
-      ))}
-    </View>
-  );
-};
-
-const Tasks = props => {
-  const sortedTasks = props.tasks.sort((prev, next) => prev.start - next.start);
-
-  return (
-    <View style={{ width: '100%' }}>
-      {hours.map((hour, hourIndex) => {
-        const emptyHourIndex = props.tasks.findIndex(
-          task => task.start <= hour && task.end >= hour,
-        );
-        return (
-          <View style={styles.emptyTask} key={`hour-${hourIndex}`}>
-            {emptyHourIndex === -1 && <View style={styles.dashLine} />}
-          </View>
-        );
-      })}
-      {sortedTasks.map((task, taskIndex) => {
-        const taskHeight = hourHeight * (task.end - task.start + 1);
-        return (
-          <View
-            style={{
-              ...styles.taskContainer,
-              top: hourHeight * task.start,
-              height: taskHeight,
-            }}
-            key={`task-${taskIndex}`}
-          >
-            <View
-              style={{
-                ...styles.taskTime,
-                backgroundColor: task.color,
-                height: taskHeight - hourHeight / 2 - 16,
-              }}
-            >
-              <Text style={styles.taskNameText}>{task.name}</Text>
-            </View>
-          </View>
-        );
-      })}
-    </View>
-  );
-};
+import Day from '@components/calendar/Day';
+import Tasks from '@components/calendar/Tasks';
 
 const CalendarScreen = () => {
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
   const agendaRef = useRef(null);
 
   const goBackToHome = () => {
@@ -86,7 +27,8 @@ const CalendarScreen = () => {
   };
 
   const openCalendar = () => {
-    agendaRef.current.chooseDay(new Date(), true);
+    agendaRef.current.toggleCalendarPosition(!isCalendarOpen);
+    setIsCalendarOpen(!isCalendarOpen);
   };
 
   return (
@@ -111,38 +53,20 @@ const CalendarScreen = () => {
             openCalendar();
           }}
         >
-          <Text style={styles.monthBtnText}>April, 2022</Text>
+          <Text style={styles.monthBtnText}>
+            {getMonthName(selectedDate.getMonth())},{' '}
+            {selectedDate.getFullYear()}
+          </Text>
         </TouchableOpacity>
       </View>
       <Agenda
         ref={agendaRef}
-        items={{
-          '2022-04-22': [
-            {
-              tasks: [
-                {
-                  name: 'Testing',
-                  start: 0,
-                  end: 6,
-                  color: '#FBE3CA',
-                },
-                {
-                  name: 'Testing',
-                  start: 2,
-                  end: 4,
-                  color: '#DBE4DD',
-                },
-                {
-                  name: 'Testing',
-                  start: 8,
-                  end: 10,
-                  color: '#F9D6D7',
-                },
-              ],
-            },
-          ],
+        items={AgendaData}
+        hideKnob
+        onDayPress={day => {
+          setSelectedDate(new Date(day.timestamp));
+          setIsCalendarOpen(false);
         }}
-        selected={'2022-04-22'}
         renderEmptyData={() => (
           <View style={styles.emptyData}>
             <Text>This day have no task.</Text>
@@ -153,13 +77,16 @@ const CalendarScreen = () => {
           return <Day />;
         }}
         theme={{
-          dotColor: 'transparent',
+          dotColor: Colors.selectedDate,
           selectedDotColor: 'transparent',
           backgroundColor: Colors.backgroundColor,
           calendarBackground: Colors.backgroundColor,
           selectedDayBackgroundColor: Colors.backgroundColor,
-          selectedDayTextColor: '#D46B74',
-          textSectionTitleDisabledColor: 'red',
+          textSectionTitleColor: 'black',
+          selectedDayTextColor: Colors.selectedDate,
+          textDayFontWeight: '700',
+          textMonthFontSize: 18,
+          textMonthFontWeight: '500',
         }}
       />
     </SafeAreaView>
@@ -213,18 +140,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  dayContainer: {
-    flexDirection: 'column',
-    paddingHorizontal: 24,
-    backgroundColor: Colors.backgroundColor,
-    alignItems: 'flex-start',
-  },
-  hourContainer: {
-    height: hourHeight,
-    alignItems: 'center',
-  },
   emptyTask: {
-    height: hourHeight,
+    height: HourHeight,
     paddingRight: 20,
   },
   dashLine: {

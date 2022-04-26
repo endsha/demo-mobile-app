@@ -45,7 +45,41 @@ export const Projects = [
     id: '3',
     name: 'Sport App',
     percentage: 75,
-    progressHours: 40, 
+    progressHours: 40,
     color: '#D46B74',
   },
 ];
+
+export const Hours = [
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+  22, 23, 24,
+];
+
+export const HourHeight = 52;
+
+export const AgendaData = {
+  '2022-04-22': [
+    {
+      tasks: [
+        {
+          name: 'Testing',
+          start: 0,
+          end: 6,
+          color: '#FBE3CA',
+        },
+        {
+          name: 'Testing',
+          start: 2,
+          end: 4,
+          color: '#DBE4DD',
+        },
+        {
+          name: 'Testing',
+          start: 8,
+          end: 10,
+          color: '#F9D6D7',
+        },
+      ],
+    },
+  ],
+};
