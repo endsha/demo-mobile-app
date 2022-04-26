@@ -18,7 +18,7 @@ const Avatar = props => {
     return converted.substr(-2);
   };
 
-  if (isError) {
+  if (isError || !props.source) {
     const name = props.name
       ? convertNameToAvatar(props.name).toUpperCase()
       : '';
@@ -34,7 +34,14 @@ const Avatar = props => {
     );
   }
 
-  return <Image {...props} onError={onError} style={[styles.defaultStyle, props.style]} />;
+  return (
+    <Image
+      {...props}
+      source={{ uri: props.source }}
+      onError={onError}
+      style={[styles.defaultStyle, props.style]}
+    />
+  );
 };
 
 export default Avatar;

@@ -1,57 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '@constants/colors';
-import Config from '@constants/config';
 
 import MyWorkspaceService from '@services/myWorkspaceService';
 
-const documents = [
-  {
-    name: 'Equipment Purchase.pdf',
-    destination: 'Disk / Objects / Contracts ...',
-    workspace: 'testing',
-  },
-  {
-    name: 'Equipment Purchase.pdf',
-    destination: 'Disk / Objects / Contracts ...',
-    workspace: 'testing 2',
-  },
-  {
-    name: 'Equipment Purchase.pdf',
-    destination: 'Disk / Objects / Contracts ...',
-    workspace: 'testing 1',
-  },
-  {
-    name: 'Equipment Purchase.pdf',
-    destination: 'Disk / Objects / Contracts ...',
-    workspace: 'testing 3',
-  },
-  {
-    name: 'Equipment Purchase.pdf',
-    destination: 'Disk / Objects / Contracts ...',
-    workspace: 'testing',
-  },
-];
-
-const Document = (props) => {
-
+const Document = props => {
   const onViewDocuments = async () => {
-    await MyWorkspaceService.trackActivity({user: Config.DEMO_EMAIL, workspace: props.workspace});
-  }
+    await MyWorkspaceService.trackActivity({
+      workspaceId: props.workspaceId,
+      taskId: props.taskId,
+    });
+  };
 
   return (
-    <TouchableOpacity style={styles.documentCard} onPress={() => onViewDocuments()}>
+    <TouchableOpacity
+      style={styles.documentCard}
+      onPress={() => onViewDocuments()}
+    >
       <Icon name="file" size={24} color={Colors.progressBar} />
       <View style={styles.documentInfo}>
         <Text style={styles.documentName}>{props.name}</Text>
-        <Text style={styles.documentDestination}>{props.destination}</Text>
+        <Text style={styles.documentDestination}>{props.taskName}</Text>
       </View>
     </TouchableOpacity>
   );
 };
 
 const DocumentSection = () => {
+  const [myDocuments, setMyDocuments] = useState([]);
+
+  useEffect(() => {
+    const getMyTasks = async () => {
+      const tasks = await MyWorkspaceService.getTasks();
+
+      if (tasks.length > 0) {
+        const myDocs = tasks.reduce((prevValue, currentValue) => {
+          if (!currentValue.taskAttachments) {
+            return [...prevValue];
+          }
+          const newTaskAttachments = currentValue.taskAttachments.map(
+            attachment => ({
+              ...attachment,
+              taskId: currentValue.id,
+              taskName: currentValue.name,
+              workspaceId: currentValue.workspaceId,
+            }),
+          );
+          return [...prevValue, ...newTaskAttachments];
+        }, []);
+
+        setMyDocuments(myDocs);
+      }
+    };
+
+    getMyTasks();
+  }, []);
+
   return (
     <View style={styles.documents}>
       <View style={styles.heading}>
@@ -60,12 +65,13 @@ const DocumentSection = () => {
           <Text style={styles.viewMoreBtnText}>View more</Text>
         </TouchableOpacity>
       </View>
-      {documents.map((doc, index) => (
+      {myDocuments.map((doc, index) => (
         <Document
           key={`document-${index}`}
-          name={doc.name}
-          destination={doc.destination}
-          workspace={doc.workspace}
+          name={doc.fileName}
+          taskName={doc.taskName}
+          taskId={doc.taskId}
+          workspaceId={doc.workspaceId}
         />
       ))}
     </View>
@@ -111,6 +117,7 @@ const styles = StyleSheet.create({
   },
   documentInfo: {
     marginLeft: 16,
+    paddingRight: 16,
   },
   documentName: {
     fontSize: 14,
@@ -121,6 +128,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     color: 'black',
-    opacity: 0.5
-  }
+    opacity: 0.5,
+  },
 });

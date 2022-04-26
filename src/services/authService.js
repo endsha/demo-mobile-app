@@ -11,6 +11,7 @@ const AuthService = {
       });
       if (response.statusCode === 200) {
         await AsyncStorage.setItem('token', response.results.token);
+        await AsyncStorage.setItem('user_id', response.results.user.id);
       }
     } catch (e) {
       console.log('ERROR: ', e);
