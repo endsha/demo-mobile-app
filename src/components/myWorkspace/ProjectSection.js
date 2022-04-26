@@ -12,8 +12,6 @@ const ProjectCard = props => {
     imageUrl: `${user.avatarUrl || ''}`,
   }));
 
-  console.log("AVATAR: ", avatars);
-
   return (
     <View style={styles.projectCard}>
       <Text style={styles.projectName}>{props.title}</Text>

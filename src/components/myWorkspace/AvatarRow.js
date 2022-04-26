@@ -5,7 +5,7 @@ import Avatar from '@components/common/Avatar';
 const AvatarRow = props => {
   if (props.avatars.length === 0) {
     return (
-      <View style={{...styles.container, justifyContent: 'center'}}>
+      <View style={{ ...styles.container, justifyContent: 'center' }}>
         <Text style={styles.emptyText}>There is no participant.</Text>
       </View>
     );
@@ -14,7 +14,7 @@ const AvatarRow = props => {
   return (
     <View style={styles.container}>
       {props.avatars.slice(0, 5).map((avatar, index) => (
-        <>
+        <View key={`avatar-${index}`}>
           {props.avatars.length > 5 && (
             <View style={styles.remainedAvatarOverlay}>
               <Text style={styles.overlayText}>
@@ -23,15 +23,14 @@ const AvatarRow = props => {
             </View>
           )}
           <Avatar
-            key={`avatar-${index}`}
             name={avatar.name}
             source={{
-              uri: avatar.url,
+              uri: avatar.imageUrl,
             }}
             resizeMode="cover"
             style={{ marginLeft: index !== 0 ? -8 : 0 }}
           />
-        </>
+        </View>
       ))}
     </View>
   );
