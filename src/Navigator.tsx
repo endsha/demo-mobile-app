@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 const Navigator = (): JSX.Element => {
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="light-content" />
       <NavigationContainer>
         <Stack.Navigator initialRouteName={WELCOME}>
           <Stack.Screen
