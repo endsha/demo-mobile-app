@@ -49,6 +49,12 @@ const CommonStyles = {
       fontSize: 18,
       lineHeight: 24,
     },
+    title2_16: {
+      // fontFamily: 'Hellix',
+      fontWeight: '600',
+      fontSize: 16,
+      lineHeight: 24,
+    },
     title3_14: {
       // fontFamily: 'Hellix',
       fontWeight: '600',

@@ -1,16 +1,33 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
-import Colors from '@constants/colors';
 import HomeHeader from '@components/home/HomeHeader';
 import SummaryCard from '@components/home/SummaryCard';
+import HorizontalListSection from '@components/home/HorizontalListSection';
+
+import Colors from '@constants/colors';
+import Data from '@constants/data';
 
 const HomeScreen = (): JSX.Element => {
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}>
       <HomeHeader />
       <SummaryCard />
-    </View>
+      <HorizontalListSection
+        title={'Petrol'}
+        data={Data.petrol}
+      />
+      <HorizontalListSection
+        title={'Rental Debate'}
+        data={Data.rentalDebate}
+      />
+      <HorizontalListSection
+        title={'Food and Beverage'}
+        data={Data.foodAndBeverage}
+      />
+    </ScrollView>
   );
 };
 
@@ -18,8 +35,10 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: Colors.white,
   },
+  contentContainer: {
+    backgroundColor: Colors.white,
+    paddingBottom: 16,
+  },
 });
-

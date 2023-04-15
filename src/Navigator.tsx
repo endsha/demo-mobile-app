@@ -7,12 +7,13 @@ import HomeTabs from '@screens/home-tabs';
 import Welcome from '@screens/Welcome';
 
 import { HOME, WELCOME } from '@constants/routes';
+import Colors from '@constants/colors';
 
 const Stack = createNativeStackNavigator();
 
 const Navigator = (): JSX.Element => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: Colors.white }}>
       <StatusBar barStyle="light-content" />
       <NavigationContainer>
         <Stack.Navigator initialRouteName={WELCOME}>
