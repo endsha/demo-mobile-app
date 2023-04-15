@@ -3,11 +3,13 @@ import {View, StyleSheet, Text} from 'react-native';
 
 import Colors from '@constants/colors';
 import HomeHeader from '@components/home/HomeHeader';
+import SummaryCard from '@components/home/SummaryCard';
 
 const HomeScreen = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <HomeHeader />
+      <SummaryCard />
     </View>
   );
 };
