@@ -2,13 +2,6 @@
 
 Demo Mobile App is a cross-platform mobile application built using React Native for iOS and Android platforms. It is a showcase app that demonstrates various features and functionalities of a typical mobile app.
 
-## Features
-
-- Feature 1: Describe the functionality of the first feature.
-- Feature 2: Describe the functionality of the second feature.
-- Feature 3: Describe the functionality of the third feature.
-- ...
-
 ## Prerequisites
 
 Before running the app locally, make sure you have the following installed:
