@@ -1,12 +1,19 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+
+import HomeIcon from '@components/icons/HomeIcon';
+import NotificationIcon from '@components/icons/NotificationIcon';
+import PaymentIcon from '@components/icons/ PaymentIcon';
+import AccountIcon from '@components/icons/AccountIcon';
+
 import {
   ACCOUNT_SETTING,
   HOME,
   NOTIFICATION,
   PAYMENT,
 } from '@constants/routes';
+import Colors from '@constants/colors';
 
 const BottomTabs = (props: BottomTabBarProps): JSX.Element => {
   const { state, descriptors, navigation } = props;
@@ -14,13 +21,13 @@ const BottomTabs = (props: BottomTabBarProps): JSX.Element => {
   const getIcon = (isActive: boolean, route: string): JSX.Element => {
     switch (route) {
       case HOME:
-        return <Text>Home</Text>;
+        return <HomeIcon />;
       case NOTIFICATION:
-        return <Text>Noti</Text>;
+        return <NotificationIcon />;
       case PAYMENT:
-        return <Text>Payment</Text>;
+        return <PaymentIcon />;
       case ACCOUNT_SETTING:
-        return <Text>Account</Text>;
+        return <AccountIcon />;
       default:
         return <></>;
     }
@@ -65,7 +72,6 @@ const BottomTabs = (props: BottomTabBarProps): JSX.Element => {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            // style={styles.iconButton}
           >
             {getIcon(isFocused, route.name)}
           </TouchableOpacity>
@@ -78,5 +84,15 @@ const BottomTabs = (props: BottomTabBarProps): JSX.Element => {
 export default BottomTabs;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 25,
+    paddingTop: 20,
+    paddingBottom: 36,
+    borderTopWidth: 2,
+    borderTopColor: Colors.grey07,
+    backgroundColor: Colors.white,
+  },
 });

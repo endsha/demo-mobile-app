@@ -6,6 +6,7 @@ import {
   FlatList,
   ViewStyle,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 
 import CommonStyles from '@constants/styles';
@@ -31,7 +32,7 @@ const HorizontalListSection = (
         data={data}
         renderItem={({ item }) => <HorizontalListCard {...item} />}
         ItemSeparatorComponent={() => <View style={{ width: 24 }} />}
-        contentContainerStyle={{ paddingHorizontal: 24, marginTop: 24 }}
+        contentContainerStyle={{ paddingHorizontal: 24, marginVertical: 24 }}
         keyExtractor={(item) => item.id.toString()}
       />
     </View>
@@ -39,11 +40,11 @@ const HorizontalListSection = (
 };
 
 const HorizontalListCard = (props: VoucherData): JSX.Element => {
-  const { coin, description } = props;
+  const { coin, description, image } = props;
 
   return (
     <TouchableOpacity style={styles.card}>
-      <View style={styles.cardImg}/>
+      <Image source={image} style={styles.cardImg}/>
       <View style={styles.cardContent}>
         <Text style={styles.cardTitle}>{coin} Coins</Text>
         <Text style={styles.cardDescription}>{description}</Text>
@@ -56,7 +57,7 @@ export default HorizontalListSection;
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 24,
+    marginTop: 24,
   },
   sectionTitle: {
     ...CommonStyles.typo.title1_18,

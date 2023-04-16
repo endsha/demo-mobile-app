@@ -5,9 +5,9 @@ const CommonStyles = {
     low: {
       elevation: 6,
       shadowColor: '#171725',
-      shadowOffset: { width: 0, height: 12 },
-      shadowOpacity: 0.04,
-      shadowRadius: 18
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.08,
+      shadowRadius: 18,
     }
   }),
   typo: StyleSheet.create({
