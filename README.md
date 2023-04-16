@@ -6,8 +6,8 @@ Demo Mobile App is a cross-platform mobile application built using React Native 
 
 Before running the app locally, make sure you have the following installed:
 
-- Node.js (version X.X.X or higher)
-- npm (version X.X.X or higher)
+- Node.js (version 16.13.2 or higher)
+- npm (version 8.1.2 or higher)
 - Xcode (for iOS development)
 - Android Studio (for Android development)
 - React Native development environment set up (Refer to the official React Native documentation for more information)
