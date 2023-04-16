@@ -1,5 +1,6 @@
 import { VoucherData } from "@custom-types/voucher";
 import Images from "@constants/images";
+import CoinIcon from "@components/icons/CoinIcon";
 
 const Data = {
   petrol: <VoucherData[]>[
@@ -14,6 +15,7 @@ const Data = {
     {
       id: 1,
       image: Images.home.petrol_2,
+      hasCoinIcon: true,
       coin: 1000,
       description: '70% discount top-up on your Shell Petrol Card',
       tag: 'Insufficient coins'

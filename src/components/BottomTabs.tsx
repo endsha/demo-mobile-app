@@ -4,7 +4,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import HomeIcon from '@components/icons/HomeIcon';
 import NotificationIcon from '@components/icons/NotificationIcon';
-import PaymentIcon from '@components/icons/ PaymentIcon';
+import PaymentIcon from '@components/icons/PaymentIcon';
 import AccountIcon from '@components/icons/AccountIcon';
 
 import {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 
 import HomeHeader from '@components/home/HomeHeader';
 import SummaryCard from '@components/home/SummaryCard';

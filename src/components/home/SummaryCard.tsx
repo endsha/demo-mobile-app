@@ -9,17 +9,20 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import ProgressBar from '@components/ProgressBar';
-import Colors from '@constants/colors';
+import { useBalance } from '@contexts/BalanceContext';
 
+import Colors from '@constants/colors';
 import CommonStyles from '@constants/styles';
 
 const SummaryCard = () => {
+  const { balance } = useBalance();
+
   return (
     <View style={styles.container}>
       <View style={styles.upperBackground} />
       <View style={styles.summaryCard}>
         <Text style={styles.balanceTitle}>Available Coin balance</Text>
-        <Text style={styles.balance}>340</Text>
+        <Text style={styles.balance}>{balance}</Text>
         <ProgressBar style={styles.progressBar} progress={0.65} />
         <Text style={styles.benefit}>
           You have paid rental fee for $1,200. Pay more $800 to achieve Gold

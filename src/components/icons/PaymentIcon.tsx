@@ -1,3 +1,4 @@
+import React from 'react';
 import { Line, Rect, Svg } from 'react-native-svg';
 
 const PaymentIcon = (): JSX.Element => {
