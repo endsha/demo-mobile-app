@@ -23,7 +23,12 @@ const BottomTabs = (props: BottomTabBarProps): JSX.Element => {
       case HOME:
         return <HomeIcon />;
       case NOTIFICATION:
-        return <NotificationIcon />;
+        return (
+          <View>
+            <NotificationIcon />
+            <View style={styles.notificationIndicator} />
+          </View>
+        );
       case PAYMENT:
         return <PaymentIcon />;
       case ACCOUNT_SETTING:
@@ -71,8 +76,7 @@ const BottomTabs = (props: BottomTabBarProps): JSX.Element => {
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
-            onLongPress={onLongPress}
-          >
+            onLongPress={onLongPress}>
             {getIcon(isFocused, route.name)}
           </TouchableOpacity>
         );
@@ -94,5 +98,14 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderTopColor: Colors.grey07,
     backgroundColor: Colors.white,
+  },
+  notificationIndicator: {
+    backgroundColor: Colors.redDark,
+    width: 12,
+    height: 12,
+    borderRadius: 12,
+    position: 'absolute',
+    top: 4,
+    right: 4,
   },
 });

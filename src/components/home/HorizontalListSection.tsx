@@ -50,7 +50,7 @@ const HorizontalListCard = (props: VoucherData): JSX.Element => {
 
   return (
     <TouchableOpacity style={styles.card}>
-      <Image source={image} style={styles.cardImg} />
+      <Image source={image} style={styles.cardImg} resizeMode='cover' />
       <View style={styles.cardContent}>
         <View style={styles.coinContainer}>
           {hasCoinIcon && <CoinIcon />}
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 4,
   },
   cardContent: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 15,
     paddingTop: 18,
     paddingBottom: 16,
   },

@@ -5,6 +5,7 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -13,6 +14,7 @@ import { useBalance } from '@contexts/BalanceContext';
 
 import Colors from '@constants/colors';
 import CommonStyles from '@constants/styles';
+import Images from '@constants/images';
 
 const SummaryCard = () => {
   const { balance } = useBalance();
@@ -21,6 +23,11 @@ const SummaryCard = () => {
     <View style={styles.container}>
       <View style={styles.upperBackground} />
       <View style={styles.summaryCard}>
+        <Image
+          source={Images.home.summary_bg}
+          style={styles.summaryBg}
+          resizeMode="cover"
+        />
         <Text style={styles.balanceTitle}>Available Coin balance</Text>
         <Text style={styles.balance}>{balance}</Text>
         <ProgressBar style={styles.progressBar} progress={0.65} />
@@ -63,6 +70,12 @@ const styles = StyleSheet.create({
     borderColor: Colors.grey09,
     borderRadius: 8,
     padding: 24,
+  },
+  summaryBg: {
+    width: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   balanceTitle: {
     ...CommonStyles.typo.title3_14,

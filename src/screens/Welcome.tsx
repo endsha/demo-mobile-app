@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, ActivityIndicator} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { MainStackNavigationProp } from '@custom-types/navigation';
@@ -20,7 +20,7 @@ const Welcome = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <Text>Welcome Screen</Text>
+      <ActivityIndicator size='large' />
     </View>
   );
 }
