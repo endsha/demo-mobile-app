@@ -13,14 +13,14 @@ const CommonStyles = {
   typo: StyleSheet.create({
     // Header
     header1_48: {
-      // fontFamily: 'Hellix',
+      fontFamily: 'Hellix-Regular',
       fontWeight: '400',
       fontSize: 48,
       lineHeight: 58,
       letterSpacing: -0.5,
     },
     header3_32: {
-      // fontFamily: 'Hellix',
+      fontFamily: 'Hellix-SemiBold',
       fontSize: 32,
       fontWeight: '600',
       lineHeight: 40,
@@ -28,14 +28,14 @@ const CommonStyles = {
     
     // Paragraph
     paragraph1_16: {
-      // fontFamily: 'Hellix',
+      fontFamily: 'Hellix-Regular',
       fontSize: 16,
       fontWeight: '400',
       lineHeight: 24,
       letterSpacing: -(0.005 * 16), // -0.005em
     },
     paragraph3_14: {
-      // fontFamily: 'Hellix',
+      fontFamily: 'Hellix-Regular',
       fontSize: 14,
       fontWeight: '400',
       lineHeight: 20,
@@ -44,19 +44,19 @@ const CommonStyles = {
 
     // Title
     title1_18: {
-      // fontFamily: 'Hellix',
+      fontFamily: 'Hellix-SemiBold',
       fontWeight: '600',
       fontSize: 18,
       lineHeight: 24,
     },
     title2_16: {
-      // fontFamily: 'Hellix',
+      fontFamily: 'Hellix-SemiBold',
       fontWeight: '600',
       fontSize: 16,
       lineHeight: 24,
     },
     title3_14: {
-      // fontFamily: 'Hellix',
+      fontFamily: 'Hellix-SemiBold',
       fontWeight: '600',
       fontSize: 14,
       lineHeight: 24,

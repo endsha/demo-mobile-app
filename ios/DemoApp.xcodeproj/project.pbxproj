@@ -14,6 +14,22 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-DemoApp-DemoAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-DemoApp-DemoAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D047408829EB7B7D0054DA60 /* Hellix-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047407829EB7B6F0054DA60 /* Hellix-Black.ttf */; };
+		D047408929EB7B7D0054DA60 /* Hellix-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047408129EB7B6F0054DA60 /* Hellix-BlackItalic.ttf */; };
+		D047408A29EB7B7D0054DA60 /* Hellix-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047407C29EB7B6F0054DA60 /* Hellix-Bold.ttf */; };
+		D047408B29EB7B7D0054DA60 /* Hellix-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047408629EB7B6F0054DA60 /* Hellix-BoldItalic.ttf */; };
+		D047408C29EB7B7D0054DA60 /* Hellix-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047407D29EB7B6F0054DA60 /* Hellix-ExtraBold.ttf */; };
+		D047408D29EB7B7D0054DA60 /* Hellix-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047408329EB7B6F0054DA60 /* Hellix-ExtraBoldItalic.ttf */; };
+		D047408E29EB7B7D0054DA60 /* Hellix-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047408029EB7B6F0054DA60 /* Hellix-Light.ttf */; };
+		D047408F29EB7B7D0054DA60 /* Hellix-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047407F29EB7B6F0054DA60 /* Hellix-LightItalic.ttf */; };
+		D047409029EB7B7D0054DA60 /* Hellix-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047408729EB7B6F0054DA60 /* Hellix-Medium.ttf */; };
+		D047409129EB7B7D0054DA60 /* Hellix-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047408529EB7B6F0054DA60 /* Hellix-MediumItalic.ttf */; };
+		D047409229EB7B7D0054DA60 /* Hellix-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047408429EB7B6F0054DA60 /* Hellix-Regular.ttf */; };
+		D047409329EB7B7D0054DA60 /* Hellix-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047407E29EB7B6F0054DA60 /* Hellix-RegularItalic.ttf */; };
+		D047409429EB7B7D0054DA60 /* Hellix-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047407A29EB7B6F0054DA60 /* Hellix-SemiBold.ttf */; };
+		D047409529EB7B7D0054DA60 /* Hellix-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047407929EB7B6F0054DA60 /* Hellix-SemiBoldItalic.ttf */; };
+		D047409629EB7B7D0054DA60 /* Hellix-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047408229EB7B6F0054DA60 /* Hellix-Thin.ttf */; };
+		D047409729EB7B7D0054DA60 /* Hellix-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D047407B29EB7B6F0054DA60 /* Hellix-ThinItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +75,22 @@
 		D03CCD7A29EB0E8D004C076F /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zocial.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		D03CCD7B29EB0E8D004C076F /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		D03CCD7C29EB0E8D004C076F /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		D047407829EB7B6F0054DA60 /* Hellix-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-Black.ttf"; path = "../src/assets/fonts/Hellix-Black.ttf"; sourceTree = "<group>"; };
+		D047407929EB7B6F0054DA60 /* Hellix-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Hellix-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		D047407A29EB7B6F0054DA60 /* Hellix-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-SemiBold.ttf"; path = "../src/assets/fonts/Hellix-SemiBold.ttf"; sourceTree = "<group>"; };
+		D047407B29EB7B6F0054DA60 /* Hellix-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-ThinItalic.ttf"; path = "../src/assets/fonts/Hellix-ThinItalic.ttf"; sourceTree = "<group>"; };
+		D047407C29EB7B6F0054DA60 /* Hellix-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-Bold.ttf"; path = "../src/assets/fonts/Hellix-Bold.ttf"; sourceTree = "<group>"; };
+		D047407D29EB7B6F0054DA60 /* Hellix-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-ExtraBold.ttf"; path = "../src/assets/fonts/Hellix-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D047407E29EB7B6F0054DA60 /* Hellix-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-RegularItalic.ttf"; path = "../src/assets/fonts/Hellix-RegularItalic.ttf"; sourceTree = "<group>"; };
+		D047407F29EB7B6F0054DA60 /* Hellix-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-LightItalic.ttf"; path = "../src/assets/fonts/Hellix-LightItalic.ttf"; sourceTree = "<group>"; };
+		D047408029EB7B6F0054DA60 /* Hellix-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-Light.ttf"; path = "../src/assets/fonts/Hellix-Light.ttf"; sourceTree = "<group>"; };
+		D047408129EB7B6F0054DA60 /* Hellix-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-BlackItalic.ttf"; path = "../src/assets/fonts/Hellix-BlackItalic.ttf"; sourceTree = "<group>"; };
+		D047408229EB7B6F0054DA60 /* Hellix-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-Thin.ttf"; path = "../src/assets/fonts/Hellix-Thin.ttf"; sourceTree = "<group>"; };
+		D047408329EB7B6F0054DA60 /* Hellix-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Hellix-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		D047408429EB7B6F0054DA60 /* Hellix-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-Regular.ttf"; path = "../src/assets/fonts/Hellix-Regular.ttf"; sourceTree = "<group>"; };
+		D047408529EB7B6F0054DA60 /* Hellix-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-MediumItalic.ttf"; path = "../src/assets/fonts/Hellix-MediumItalic.ttf"; sourceTree = "<group>"; };
+		D047408629EB7B6F0054DA60 /* Hellix-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-BoldItalic.ttf"; path = "../src/assets/fonts/Hellix-BoldItalic.ttf"; sourceTree = "<group>"; };
+		D047408729EB7B6F0054DA60 /* Hellix-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hellix-Medium.ttf"; path = "../src/assets/fonts/Hellix-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -107,6 +139,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				D03CCD6C29EB0E5C004C076F /* Fonts */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				D047407729EB7B500054DA60 /* AppFonts */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -186,6 +219,29 @@
 				D03CCD7A29EB0E8D004C076F /* Zocial.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D047407729EB7B500054DA60 /* AppFonts */ = {
+			isa = PBXGroup;
+			children = (
+				D047407829EB7B6F0054DA60 /* Hellix-Black.ttf */,
+				D047408129EB7B6F0054DA60 /* Hellix-BlackItalic.ttf */,
+				D047407C29EB7B6F0054DA60 /* Hellix-Bold.ttf */,
+				D047408629EB7B6F0054DA60 /* Hellix-BoldItalic.ttf */,
+				D047407D29EB7B6F0054DA60 /* Hellix-ExtraBold.ttf */,
+				D047408329EB7B6F0054DA60 /* Hellix-ExtraBoldItalic.ttf */,
+				D047408029EB7B6F0054DA60 /* Hellix-Light.ttf */,
+				D047407F29EB7B6F0054DA60 /* Hellix-LightItalic.ttf */,
+				D047408729EB7B6F0054DA60 /* Hellix-Medium.ttf */,
+				D047408529EB7B6F0054DA60 /* Hellix-MediumItalic.ttf */,
+				D047408429EB7B6F0054DA60 /* Hellix-Regular.ttf */,
+				D047407E29EB7B6F0054DA60 /* Hellix-RegularItalic.ttf */,
+				D047407A29EB7B6F0054DA60 /* Hellix-SemiBold.ttf */,
+				D047407929EB7B6F0054DA60 /* Hellix-SemiBoldItalic.ttf */,
+				D047408229EB7B6F0054DA60 /* Hellix-Thin.ttf */,
+				D047407B29EB7B6F0054DA60 /* Hellix-ThinItalic.ttf */,
+			);
+			name = AppFonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +338,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D047408829EB7B7D0054DA60 /* Hellix-Black.ttf in Resources */,
+				D047408929EB7B7D0054DA60 /* Hellix-BlackItalic.ttf in Resources */,
+				D047408A29EB7B7D0054DA60 /* Hellix-Bold.ttf in Resources */,
+				D047408B29EB7B7D0054DA60 /* Hellix-BoldItalic.ttf in Resources */,
+				D047408C29EB7B7D0054DA60 /* Hellix-ExtraBold.ttf in Resources */,
+				D047408D29EB7B7D0054DA60 /* Hellix-ExtraBoldItalic.ttf in Resources */,
+				D047408E29EB7B7D0054DA60 /* Hellix-Light.ttf in Resources */,
+				D047408F29EB7B7D0054DA60 /* Hellix-LightItalic.ttf in Resources */,
+				D047409029EB7B7D0054DA60 /* Hellix-Medium.ttf in Resources */,
+				D047409129EB7B7D0054DA60 /* Hellix-MediumItalic.ttf in Resources */,
+				D047409229EB7B7D0054DA60 /* Hellix-Regular.ttf in Resources */,
+				D047409329EB7B7D0054DA60 /* Hellix-RegularItalic.ttf in Resources */,
+				D047409429EB7B7D0054DA60 /* Hellix-SemiBold.ttf in Resources */,
+				D047409529EB7B7D0054DA60 /* Hellix-SemiBoldItalic.ttf in Resources */,
+				D047409629EB7B7D0054DA60 /* Hellix-Thin.ttf in Resources */,
+				D047409729EB7B7D0054DA60 /* Hellix-ThinItalic.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);

@@ -53,6 +53,8 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Hellix-Regular.ttf</string>
+		<string>Hellix-SemiBold.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
